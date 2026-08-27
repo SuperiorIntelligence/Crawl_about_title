@@ -73,11 +73,20 @@ def _print_report(report) -> None:
 def search_cmd(
     query: str = typer.Argument(..., help="عبارت کالا، مثلاً لپ تاپ یا گلس"),
     no_cache: bool = typer.Option(False, "--no-cache"),
+    no_web: bool = typer.Option(
+        False,
+        "--no-web",
+        help="کشف وب‌سایت‌های مستقل را خاموش کن (فقط مارکت‌پلیس‌ها)",
+    ),
 ) -> None:
     """جستجوی عمومی کمترین قیمت برای هر کالا."""
     from services.search import run_search
 
-    report = run_search(query, use_cache=not no_cache)
+    report = run_search(
+        query,
+        use_cache=not no_cache,
+        discover_web=not no_web,
+    )
     if not report.winner:
         console.print("[yellow]No offers found[/yellow]")
         for e in report.errors:
@@ -87,6 +96,8 @@ def search_cmd(
     console.print(f"[green]Winner:[/green] {w.title}")
     console.print(f"price: {w.price_toman:,.0f} Toman | link: {w.url}")
     console.print(f"source: {w.source}")
+    if report.sources:
+        console.print(f"sources used: {', '.join(report.sources)}")
 
 
 @app.command("run")

@@ -15,7 +15,7 @@ form?.addEventListener("submit", async (event) => {
     const res = await fetch("/api/search", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, use_cache: true }),
+      body: JSON.stringify({ query, use_cache: true, discover_web: true }),
     });
     if (!res.ok) {
       const text = await res.text();

@@ -83,6 +83,7 @@ class SearchRequest(BaseModel):
 
     query: str = Field(min_length=1, max_length=200)
     use_cache: bool = True
+    discover_web: bool = True
 
 
 class SearchReportOut(BaseModel):

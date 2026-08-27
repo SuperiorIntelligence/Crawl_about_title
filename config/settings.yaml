@@ -37,9 +37,10 @@ discovery:
     - "خرید قهوه روبوستا"
     - "فروشگاه قهوه آنلاین"
     - "دانه قهوه عربیکا قیمت"
-  # فقط دامنه‌های ایرانی را نگه می‌داریم
+  # فقط دامنه‌های ایرانی را برای کشف وب نگه می‌داریم
   require_ir_tld: true
-  max_results_per_query: 8
+  max_results_per_query: 6
+  max_web_seeds: 18
 
 runtime:
   request_timeout_sec: 25

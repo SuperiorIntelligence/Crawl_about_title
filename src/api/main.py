@@ -67,7 +67,11 @@ def get_results() -> Optional[dict]:
 @app.post("/api/search", response_model=SearchReportOut)
 def post_search(body: SearchRequest) -> SearchReportOut:
     """جستجوی عمومی کمترین قیمت برای کوئری آزاد."""
-    report = run_search(body.query, use_cache=body.use_cache)
+    report = run_search(
+        body.query,
+        use_cache=body.use_cache,
+        discover_web=body.discover_web,
+    )
     return SearchReportOut.from_report(report)
 
 
