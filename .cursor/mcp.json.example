@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "plane": {
+      "command": "uvx",
+      "args": ["plane-mcp-server", "stdio"],
+      "env": {
+        "PLANE_API_KEY": "${env:PLANE_API_KEY}",
+        "PLANE_WORKSPACE_SLUG": "${env:PLANE_WORKSPACE_SLUG}",
+        "PLANE_BASE_URL": "${env:PLANE_BASE_URL}"
+      }
+    },
+    "linear": {
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "graphify": {
+      "command": "python",
+      "args": ["-m", "graphify.serve", "graphify-out/graph.json"]
+    }
+  }
+}

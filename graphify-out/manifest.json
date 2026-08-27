@@ -1,0 +1,116 @@
+{
+  "data/fixtures/demo_products.json": {
+    "mtime": 1787838521.053931,
+    "seen": 1787839068.6985774,
+    "ast_hash": "7265cc08f2f02c57e984479f65cae486",
+    "semantic_hash": "7265cc08f2f02c57e984479f65cae486"
+  },
+  "pyproject.toml": {
+    "mtime": 1787838375.6051748,
+    "seen": 1787839068.6985774,
+    "ast_hash": "8c6b3c1e56b2f0316673e5b53bfd2b56",
+    "semantic_hash": "8c6b3c1e56b2f0316673e5b53bfd2b56"
+  },
+  "src/api/__init__.py": {
+    "mtime": 1787838552.8876207,
+    "seen": 1787839068.6985774,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "src/api/main.py": {
+    "mtime": 1787838504.5046346,
+    "seen": 1787839068.6985774,
+    "ast_hash": "c69c888cb325f46de9546cdbbab114ce",
+    "semantic_hash": "c69c888cb325f46de9546cdbbab114ce"
+  },
+  "src/core/__init__.py": {
+    "mtime": 1787838418.8691037,
+    "seen": 1787839068.6985774,
+    "ast_hash": "47acf72ee500d181e60dd09416b51533",
+    "semantic_hash": "47acf72ee500d181e60dd09416b51533"
+  },
+  "src/core/cli.py": {
+    "mtime": 1787838790.767862,
+    "seen": 1787839068.6985774,
+    "ast_hash": "edeccfa0ac8abe7e92ee166c26427d9f",
+    "semantic_hash": "edeccfa0ac8abe7e92ee166c26427d9f"
+  },
+  "src/models/__init__.py": {
+    "mtime": 1787838408.4012494,
+    "seen": 1787839068.6985774,
+    "ast_hash": "7535db93349b7a0ed501c59e704e8f15",
+    "semantic_hash": "7535db93349b7a0ed501c59e704e8f15"
+  },
+  "src/models/offer.py": {
+    "mtime": 1787838401.6960042,
+    "seen": 1787839068.6985774,
+    "ast_hash": "d3d35358a1c6f1ce4fdeaca5c5d7a206",
+    "semantic_hash": "d3d35358a1c6f1ce4fdeaca5c5d7a206"
+  },
+  "src/schemas/__init__.py": {
+    "mtime": 1787838418.8032603,
+    "seen": 1787839068.6985774,
+    "ast_hash": "0a42bcbcdaa6bb8a1b2cb11f16ec5bcb",
+    "semantic_hash": "0a42bcbcdaa6bb8a1b2cb11f16ec5bcb"
+  },
+  "src/services/__init__.py": {
+    "mtime": 1787838548.7299078,
+    "seen": 1787839068.6985774,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "src/services/crawlers/__init__.py": {
+    "mtime": 1787838798.0454464,
+    "seen": 1787839068.6985774,
+    "ast_hash": "ba088e14e0d6a9da3328aa89d491e677",
+    "semantic_hash": "ba088e14e0d6a9da3328aa89d491e677"
+  },
+  "src/services/discovery.py": {
+    "mtime": 1787838485.4325438,
+    "seen": 1787839068.6985774,
+    "ast_hash": "9e7b1f8ed3f027ed30027cce9d6a655a",
+    "semantic_hash": "9e7b1f8ed3f027ed30027cce9d6a655a"
+  },
+  "src/services/http_fetcher.py": {
+    "mtime": 1787838462.5499215,
+    "seen": 1787839068.6985774,
+    "ast_hash": "7c84edca5620c79c3c40b9170f943b8d",
+    "semantic_hash": "7c84edca5620c79c3c40b9170f943b8d"
+  },
+  "src/services/normalize.py": {
+    "mtime": 1787838442.5360236,
+    "seen": 1787839068.6985774,
+    "ast_hash": "0eda234bbb348b4b5283475ebd3f1199",
+    "semantic_hash": "0eda234bbb348b4b5283475ebd3f1199"
+  },
+  "src/services/pipeline.py": {
+    "mtime": 1787838540.8440433,
+    "seen": 1787839068.6985774,
+    "ast_hash": "2ab0f95d15e41dbedff87f5273e785d4",
+    "semantic_hash": "2ab0f95d15e41dbedff87f5273e785d4"
+  },
+  "src/services/rank.py": {
+    "mtime": 1787838447.6404493,
+    "seen": 1787839068.6985774,
+    "ast_hash": "1743e2f4a394b6dda9ddcf080bc35a1c",
+    "semantic_hash": "1743e2f4a394b6dda9ddcf080bc35a1c"
+  },
+  "src/web/static/app.js": {
+    "mtime": 1787838540.2105763,
+    "seen": 1787839068.6985774,
+    "ast_hash": "7490b1830764d9b9a46875b04a86b7d0",
+    "semantic_hash": "7490b1830764d9b9a46875b04a86b7d0"
+  },
+  "tests/test_normalize_rank.py": {
+    "mtime": 1787838554.6390996,
+    "seen": 1787839068.6985774,
+    "ast_hash": "d0826a0bbf01fce4931ebb0f5aa1097e",
+    "semantic_hash": "d0826a0bbf01fce4931ebb0f5aa1097e"
+  },
+  "tests/test_pipeline_demo.py": {
+    "mtime": 1787838556.7292385,
+    "seen": 1787839068.6985774,
+    "ast_hash": "bfc8d1f8ec279a5ab1fec1deb58ba370",
+    "semantic_hash": "bfc8d1f8ec279a5ab1fec1deb58ba370"
+  }
+}

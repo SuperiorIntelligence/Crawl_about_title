@@ -1,0 +1,48 @@
+# Seed Iranian coffee / marketplace listing pages (extend freely)
+# Each entry is crawled for Arabica/Robusta product cards when possible.
+
+seeds:
+  - name: demo-fixture
+    kind: fixture
+    enabled: true
+    path: data/fixtures/demo_products.json
+
+  - name: digikala-arabica-search
+    kind: html_listing
+    enabled: true
+    url: "https://www.digikala.com/search/?q=%D9%82%D9%87%D9%88%D9%87%20%D8%B9%D8%B1%D8%A8%DB%8C%DA%A9%D8%A7"
+    coffee_hint: arabica
+
+  - name: digikala-robusta-search
+    kind: html_listing
+    enabled: true
+    url: "https://www.digikala.com/search/?q=%D9%82%D9%87%D9%88%D9%87%20%D8%B1%D9%88%D8%A8%D9%88%D8%B3%D8%AA%D8%A7"
+    coffee_hint: robusta
+
+  - name: torob-arabica
+    kind: html_listing
+    enabled: true
+    url: "https://torob.com/search/?query=%D9%82%D9%87%D9%88%D9%87+%D8%B9%D8%B1%D8%A8%DB%8C%DA%A9%D8%A7"
+    coffee_hint: arabica
+
+  - name: torob-robusta
+    kind: html_listing
+    enabled: true
+    url: "https://torob.com/search/?query=%D9%82%D9%87%D9%88%D9%87+%D8%B1%D9%88%D8%A8%D9%88%D8%B3%D8%AA%D8%A7"
+    coffee_hint: robusta
+
+discovery:
+  queries:
+    - "خرید قهوه عربیکا"
+    - "خرید قهوه روبوستا"
+    - "فروشگاه قهوه آنلاین"
+    - "دانه قهوه عربیکا قیمت"
+  # فقط دامنه‌های ایرانی را نگه می‌داریم
+  require_ir_tld: true
+  max_results_per_query: 8
+
+runtime:
+  request_timeout_sec: 25
+  rate_limit_per_host_sec: 1.0
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+  cache_ttl_sec: 3600

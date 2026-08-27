@@ -1,0 +1,22 @@
+---
+description: Core project rules — always applied
+alwaysApply: true
+---
+
+# Project Rules
+
+- Before doing anything, read `AGENTS.md` at the repo root. It is authoritative.
+- Always identify which agent persona you are acting as (see `.cursor/agents/`)
+  before starting work, and stay inside that agent's scope.
+- Follow the matching workflow in `.cursor/workflows/` step by step. Do not
+  skip or reorder steps. For large projects, `version-workflow.md` is the
+  top-level loop — see `.cursor/rules/versioning.mdc`.
+- Prefer the Graphify knowledge graph over reading/grepping raw files when
+  exploring the codebase — see `.cursor/rules/graphify.mdc`.
+- Never modify `AGENTS.md`, files in `.cursor/rules/`, or files in
+  `.cursor/workflows/` unless the human explicitly asks for it.
+- If a requirement is ambiguous, stop and ask a clarifying question instead
+  of guessing.
+- Prefer small, reviewable diffs over large rewrites.
+- Every change must be explainable in one or two sentences in the commit
+  message / PR description.

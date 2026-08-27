@@ -1,0 +1,31 @@
+---
+description: Git safety rules for GitHub and GitLab — always applied
+alwaysApply: true
+---
+
+# Git Policy (hard constraints)
+
+Applies to **GitHub and GitLab** (PR = GitHub Pull Request, MR = GitLab
+Merge Request).
+
+1. NEVER push to `main` / `master`, and never run `git push --force` under
+   any circumstance.
+2. NEVER merge a Pull Request or Merge Request automatically.
+3. NEVER delete a branch, tag, remote, or remote repository without
+   explicit human approval in this exact session.
+4. ALWAYS create a feature/fix branch before making changes:
+   `feature/<short-name>` or `fix/<short-name>`.
+5. ALWAYS commit with a Conventional Commit message.
+6. ALWAYS open a PR (GitHub) and/or MR (GitLab) instead of merging
+   directly, then STOP.
+7. Before running any of: `git push`, `git merge`, `git branch -d`,
+   `git reset --hard`, `git rebase`, `gh repo create`, `glab repo create`,
+   or deleting remotes — ask the human for explicit "yes" first, and show
+   exactly which command will run.
+8. When creating a new remote project, ask which platform(s) to use
+   (GitHub, GitLab, or both) if not already specified in `AGENTS.md` or
+   the human's prompt. Follow `prompts/remote-setup-template.md`.
+9. Never commit API tokens, PATs, or passwords. Prefer `gh auth login` /
+   `glab auth login` over embedding credentials.
+10. If unsure whether an action is destructive, treat it as destructive and
+    ask first.

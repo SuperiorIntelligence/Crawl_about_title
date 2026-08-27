@@ -1,0 +1,31 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# Secrets / local
+.env
+.cursor/mcp.json
+*.pem
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Build / dist
+dist/
+build/
+*.egg-info/
+
+# App runtime
+data/cache/
+data/results.json
+graphify-out/cost.json

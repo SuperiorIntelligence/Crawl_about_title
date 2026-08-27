@@ -1,0 +1,16 @@
+# Recommended additions to your project's .gitignore when using this
+# template. Rename/merge this into your real .gitignore — it is named
+# `.gitignore.template` here so copying the starter doesn't silently create
+# a `.gitignore` that fights with a stack-specific one you already have.
+
+# Graphify — commit graph.json + GRAPH_REPORT.md, ignore local-only files
+graphify-out/cost.json
+graphify-out/.graphify_python
+# graphify-out/cache/       # optional: commit for speed, or ignore to keep the repo small
+
+# Local MCP secrets — never commit API keys used by stdio MCP servers
+.env
+.env.local
+# If you put real tokens in project .cursor/mcp.json, do NOT commit it.
+# Prefer `.cursor/mcp.json.example` + user-global mcp.json / env vars.
+.cursor/mcp.json

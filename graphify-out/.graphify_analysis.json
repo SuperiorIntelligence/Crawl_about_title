@@ -1,0 +1,320 @@
+{
+  "communities": {
+    "0": [
+      "enum",
+      "src_models_offer_coffeetype",
+      "src_services_crawlers_init",
+      "src_services_crawlers_init_absolute_url",
+      "src_services_crawlers_init_crawl_seed",
+      "src_services_crawlers_init_load_fixture_offers",
+      "src_services_crawlers_init_parse_listing_html",
+      "src_services_crawlers_init_py_any",
+      "src_services_crawlers_init_py_path",
+      "src_services_crawlers_init_rationale_1",
+      "src_services_crawlers_init_rationale_105",
+      "src_services_crawlers_init_rationale_20",
+      "src_services_crawlers_init_rationale_52",
+      "src_services_normalize",
+      "src_services_normalize_detect_coffee_type",
+      "src_services_normalize_normalize_digits",
+      "src_services_normalize_parse_price_toman",
+      "src_services_normalize_parse_weight_grams",
+      "src_services_normalize_price_per_gram",
+      "src_services_normalize_rationale_1",
+      "src_services_normalize_rationale_108",
+      "src_services_normalize_rationale_35",
+      "src_services_normalize_rationale_40",
+      "src_services_normalize_rationale_60",
+      "src_services_normalize_rationale_85",
+      "str",
+      "tests_test_normalize_rank",
+      "tests_test_normalize_rank_test_detect_coffee_type",
+      "tests_test_normalize_rank_test_parse_price_with_separators",
+      "tests_test_normalize_rank_test_parse_weight_half_kilo",
+      "tests_test_normalize_rank_test_parse_weight_kg",
+      "tests_test_normalize_rank_test_parse_weight_persian_grams",
+      "tests_test_normalize_rank_test_price_per_gram_comparison_example"
+    ],
+    "1": [
+      "get",
+      "htmlresponse",
+      "post",
+      "request",
+      "src_api_main",
+      "src_api_main_get_results",
+      "src_api_main_health",
+      "src_api_main_home",
+      "src_api_main_post_crawl",
+      "src_api_main_rationale_1",
+      "src_api_main_rationale_43",
+      "src_api_main_rationale_52",
+      "src_api_main_rationale_63",
+      "src_core_init",
+      "src_core_init_load_results",
+      "src_core_init_rationale_1",
+      "src_core_init_rationale_88",
+      "src_schemas_init",
+      "src_schemas_init_crawlrequest",
+      "src_schemas_init_offerout",
+      "src_schemas_init_py_basemodel",
+      "src_schemas_init_rankout",
+      "src_schemas_init_rationale_14",
+      "src_schemas_init_rationale_55",
+      "src_schemas_init_rationale_74",
+      "src_schemas_init_reportout",
+      "src_schemas_init_reportout_from_report"
+    ],
+    "2": [
+      "src_core_init_ratelimiter",
+      "src_core_init_ratelimiter_init",
+      "src_core_init_ratelimiter_wait",
+      "src_core_init_rationale_27",
+      "src_core_init_rationale_34",
+      "src_services_discovery",
+      "src_services_discovery_discover_sellers",
+      "src_services_discovery_is_iranian_host",
+      "src_services_discovery_py_any",
+      "src_services_discovery_rationale_1",
+      "src_services_discovery_rationale_42",
+      "src_services_discovery_unwrap_ddg_redirect",
+      "src_services_http_fetcher",
+      "src_services_http_fetcher_httpfetcher",
+      "src_services_http_fetcher_httpfetcher_close",
+      "src_services_http_fetcher_httpfetcher_get_text",
+      "src_services_http_fetcher_httpfetcher_init",
+      "src_services_http_fetcher_rationale_1",
+      "src_services_http_fetcher_rationale_14",
+      "src_services_http_fetcher_rationale_39"
+    ],
+    "3": [
+      "src_models_init",
+      "src_models_offer",
+      "src_models_offer_crawlreport",
+      "src_models_offer_productoffer",
+      "src_models_offer_py_basemodel",
+      "src_models_offer_rankedresult",
+      "src_models_offer_rationale_1",
+      "src_models_offer_rationale_19",
+      "src_models_offer_rationale_44",
+      "src_models_offer_rationale_52",
+      "src_schemas_init_offerout_from_offer",
+      "src_schemas_init_rationale_27",
+      "src_services_pipeline",
+      "src_services_pipeline_rationale_1",
+      "src_services_rank",
+      "src_services_rank_rank_offers",
+      "src_services_rank_rationale_1",
+      "src_services_rank_rationale_9",
+      "tests_test_normalize_rank_test_rank_picks_best_per_gram"
+    ],
+    "4": [
+      "command",
+      "src_core_cli",
+      "src_core_cli_print_report",
+      "src_core_cli_rationale_1",
+      "src_core_cli_rationale_104",
+      "src_core_cli_rationale_90",
+      "src_core_cli_run",
+      "src_core_cli_serve",
+      "src_services_pipeline_py_any",
+      "src_services_pipeline_rationale_23",
+      "src_services_pipeline_run_crawl",
+      "tests_test_pipeline_demo",
+      "tests_test_pipeline_demo_test_demo_pipeline_finds_winners"
+    ],
+    "5": [
+      "src_core_init_filecache",
+      "src_core_init_filecache_get",
+      "src_core_init_filecache_init",
+      "src_core_init_filecache_key_path",
+      "src_core_init_filecache_set",
+      "src_core_init_load_settings",
+      "src_core_init_py_any",
+      "src_core_init_py_path",
+      "src_core_init_rationale_20",
+      "src_core_init_rationale_44",
+      "src_core_init_rationale_56",
+      "src_core_init_rationale_78",
+      "src_core_init_save_results"
+    ],
+    "6": [
+      "computed_field",
+      "src_models_offer_productoffer_price_per_gram",
+      "src_models_offer_productoffer_price_per_kg",
+      "src_models_offer_rationale_33",
+      "src_models_offer_rationale_39"
+    ],
+    "7": [
+      "src_web_static_app",
+      "src_web_static_app_runcrawl"
+    ],
+    "8": [
+      "pkg_coffee_price_crawler"
+    ],
+    "9": [
+      "src_api_init"
+    ],
+    "10": [
+      "src_services_init"
+    ]
+  },
+  "cohesion": {
+    "0": 0.10037878787878787,
+    "1": 0.11396011396011396,
+    "2": 0.12631578947368421,
+    "3": 0.19883040935672514,
+    "4": 0.19230769230769232,
+    "5": 0.23076923076923078,
+    "6": 0.4,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_services_pipeline_run_crawl",
+      "label": "run_crawl()",
+      "degree": 19
+    },
+    {
+      "id": "src_models_offer_productoffer",
+      "label": "ProductOffer",
+      "degree": 18
+    },
+    {
+      "id": "src_models_offer_coffeetype",
+      "label": "CoffeeType",
+      "degree": 16
+    },
+    {
+      "id": "src_services_http_fetcher_httpfetcher",
+      "label": "HttpFetcher",
+      "degree": 11
+    },
+    {
+      "id": "src_models_offer_crawlreport",
+      "label": "CrawlReport",
+      "degree": 11
+    },
+    {
+      "id": "src_core_init_filecache",
+      "label": "FileCache",
+      "degree": 10
+    },
+    {
+      "id": "src_schemas_init_reportout",
+      "label": "ReportOut",
+      "degree": 9
+    },
+    {
+      "id": "src_services_crawlers_init_crawl_seed",
+      "label": "crawl_seed()",
+      "degree": 9
+    },
+    {
+      "id": "src_services_crawlers_init_parse_listing_html",
+      "label": "parse_listing_html()",
+      "degree": 9
+    },
+    {
+      "id": "src_services_rank_rank_offers",
+      "label": "rank_offers()",
+      "degree": 9
+    }
+  ],
+  "surprises": [
+    {
+      "source": "test_rank_picks_best_per_gram()",
+      "target": "CoffeeType",
+      "source_files": [
+        "tests/test_normalize_rank.py",
+        "src/models/offer.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "test_detect_coffee_type()",
+      "target": "CoffeeType",
+      "source_files": [
+        "tests/test_normalize_rank.py",
+        "src/models/offer.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "test_rank_picks_best_per_gram()",
+      "target": "ProductOffer",
+      "source_files": [
+        "tests/test_normalize_rank.py",
+        "src/models/offer.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "test_parse_price_with_separators()",
+      "target": "parse_price_toman()",
+      "source_files": [
+        "tests/test_normalize_rank.py",
+        "src/services/normalize.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `test_parse_price_with_separators()` unexpectedly reaches hub `parse_price_toman()`"
+    },
+    {
+      "source": "test_parse_weight_half_kilo()",
+      "target": "parse_weight_grams()",
+      "source_files": [
+        "tests/test_normalize_rank.py",
+        "src/services/normalize.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `test_parse_weight_half_kilo()` unexpectedly reaches hub `parse_weight_grams()`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `run_crawl()` connect `run_crawl` to `CoffeeType`, `main.py`, `HttpFetcher`, `pipeline.py`, `FileCache`?",
+      "why": "High betweenness centrality (0.196) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `ProductOffer` connect `pipeline.py` to `CoffeeType`, `main.py`, `run_crawl`, `.price_per_gram`?",
+      "why": "High betweenness centrality (0.160) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `FileCache` connect `FileCache` to `main.py`, `HttpFetcher`, `pipeline.py`, `run_crawl`?",
+      "why": "High betweenness centrality (0.081) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `run_crawl()` (e.g. with `CrawlReport` and `ProductOffer`) actually correct?",
+      "why": "`run_crawl()` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 5 inferred relationships involving `ProductOffer` (e.g. with `OfferOut` and `crawl_seed()`) actually correct?",
+      "why": "`ProductOffer` has 5 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 7 inferred relationships involving `CoffeeType` (e.g. with `OfferOut` and `RankOut`) actually correct?",
+      "why": "`CoffeeType` has 7 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `HttpFetcher` (e.g. with `crawl_seed()` and `discover_sellers()`) actually correct?",
+      "why": "`HttpFetcher` has 2 INFERRED edges - model-reasoned connections that need verification."
+    }
+  ]
+}
