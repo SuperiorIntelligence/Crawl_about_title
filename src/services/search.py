@@ -1,4 +1,4 @@
-"""جستجوی عمومی کمترین قیمت از چند مارکت‌پلیس ایرانی."""
+"""جستجوی عمومی کمترین قیمت: مارکت‌پلیس‌ها + کشف وب‌سایت‌های مستقل."""
 
 from __future__ import annotations
 
@@ -7,11 +7,13 @@ from typing import Any, Optional
 from core import FileCache, RateLimiter, load_settings, save_results
 from models.offer import ProductOffer, SearchReport
 from schemas import SearchReportOut
+from services.crawlers import crawl_seed
 from services.crawlers.basalam_api import basalam_search
 from services.crawlers.digikala_api import digikala_search
 from services.crawlers.divar_api import divar_search
 from services.crawlers.snapp_okala import okala_search, snapp_search
 from services.crawlers.torob_api import torob_search
+from services.discovery import discover_web_shops
 from services.http_fetcher import HttpFetcher
 from services.normalize import looks_like_unit_goods
 
@@ -36,15 +38,17 @@ def run_search(
     query: str,
     *,
     use_cache: bool = True,
+    discover_web: bool = True,
     settings: Optional[dict[str, Any]] = None,
 ) -> SearchReport:
-    """جستجو در دیجی‌کالا، باسلام، دیوار، ترب، اسنپ، اکالا."""
+    """جستجو در مارکت‌پلیس‌ها + کشف و crawl سایت‌های مستقل از وب."""
     q = (query or "").strip()
     if not q:
         return SearchReport(query="", errors=["query is empty"])
 
     cfg = settings or load_settings()
     runtime = cfg.get("runtime", {})
+    dcfg = cfg.get("discovery", {})
     errors: list[str] = []
     offers: list[ProductOffer] = []
     sources: list[str] = []
@@ -66,12 +70,46 @@ def run_search(
             sources.append(name)
 
     try:
+        # ۱) مارکت‌پلیس‌های اصلی
         _merge("digikala", *digikala_search(q, fetcher))
         _merge("basalam", *basalam_search(q, fetcher))
         _merge("divar", *divar_search(q, fetcher))
         _merge("torob", *torob_search(q))
         _merge("snapp", *snapp_search(q))
         _merge("okala", *okala_search(q))
+
+        # ۲) کشف وب‌سایت‌های مستقل (خارج از ترب/دیجی‌کالا/…)
+        if discover_web:
+            seeds, derr = discover_web_shops(
+                q,
+                fetcher,
+                require_ir_tld=bool(dcfg.get("require_ir_tld", True)),
+                max_total=int(dcfg.get("max_web_seeds", 18)),
+                max_per_query=int(dcfg.get("max_results_per_query", 6)),
+            )
+            errors.extend(derr)
+            web_hits = 0
+            for seed in seeds:
+                part, err = crawl_seed(
+                    seed,
+                    fetcher=fetcher,
+                    coffee_only=False,
+                    query=q,
+                )
+                # خطاهای تکراری هر دامنه را خلاصه نگه دار
+                for e in err:
+                    if "no parseable" not in e:
+                        errors.append(e)
+                if part:
+                    offers.extend(part)
+                    web_hits += len(part)
+            if web_hits:
+                sources.append("web-discovery")
+            elif seeds:
+                errors.append(
+                    f"web-discovery: visited {len(seeds)} independent pages, "
+                    "none yielded parseable prices"
+                )
     finally:
         fetcher.close()
 
