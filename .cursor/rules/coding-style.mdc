@@ -1,0 +1,31 @@
+---
+description: Coding style rules — applied to code files
+globs: ["**/*.py", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+alwaysApply: false
+---
+
+# Coding Style
+
+- Match the conventions already used in the surrounding file; do not
+  introduce a new style in an existing module.
+- No unused imports, no dead code, no commented-out blocks left in commits.
+- Every function that is part of a public API (route, exported function,
+  component) needs a docstring/JSDoc explaining purpose, params, return.
+- Prefer explicit names over abbreviations.
+- Add/extend tests for any new logic branch (see `tester` agent).
+- Run the project's linter/formatter before considering a task complete.
+- Keep functions under ~50 lines where reasonably possible; extract helpers
+  otherwise.
+
+## Persian comments / docs (required)
+- Write **docstrings / JSDoc and explanatory comments in Persian (فارسی)**.
+- Comment **only where it helps**: public functions, non-obvious business
+  rules, workarounds, invariants, and tricky edge cases.
+- Do **not** comment every line. Do not narrate obvious code
+  (`i++ // افزایش شمارنده` is banned).
+- Prefer a short Persian docstring on the function over five inline
+  comments inside it.
+- Keep identifiers (function/variable/class names) in English per the
+  project's naming rules; only human-facing explanations are Persian.
+- Commit messages and PR/MR titles stay in Conventional Commits English
+  unless the human explicitly asks otherwise.

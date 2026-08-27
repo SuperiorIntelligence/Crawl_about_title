@@ -1,0 +1,43 @@
+---
+description: Version-scoped delivery policy for large projects — always applied
+alwaysApply: true
+---
+
+# Versioning Policy (hard constraint)
+
+Large projects are broken into shippable **versions** (`v1`, `v2`, `v3`, ...)
+tracked in `memory/roadmap.md`. This keeps each Cursor session focused on a
+scope Cursor can actually hold in context and review, instead of trying to
+plan/implement/verify an entire large project in one pass.
+
+## Rules
+1. Before starting any task, read `memory/roadmap.md` → the **Current
+   Version** pointer. That is the only version agents may implement right
+   now.
+2. If a request clearly belongs to a later version (per the roadmap), do not
+   implement it. Tell the human it is scheduled for `vX` and ask explicitly
+   whether they want to pull it forward on purpose — never assume yes.
+3. A version cannot be marked **Released** in `memory/roadmap.md` until:
+   - every feature/task in that version's scope has passed `reviewer` (and
+     `security`, if applicable),
+   - `.cursor/workflows/release-workflow.md` has completed for that version,
+   - the human has explicitly approved moving on.
+4. Only after a version is marked **Released** may the `roadmap` agent move
+   the "Current Version" pointer forward and hand off to `planner` for the
+   next version's first feature. No agent may advance the pointer on its
+   own initiative.
+5. Never mix scope from two different versions into the same branch/PR —
+   keep every diff traceable to exactly one version (and, inside it, to one
+   feature/bugfix).
+6. If mid-version the human asks for something out of scope, treat it like
+   any other future-version request (rule 2): flag it, don't silently
+   absorb it.
+
+## Why
+- Smaller, well-scoped context per version means fewer tokens per task,
+  fewer hallucinated cross-cutting changes, and a Reviewer/Security pass a
+  human can actually check.
+- Combined with Graphify (`.cursor/rules/graphify.mdc`), this keeps both the
+  *codebase* context (via the graph) and the *task* context (via versions)
+  intentionally small — this is the main lever for using Cursor reliably on
+  large projects.

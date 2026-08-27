@@ -1,0 +1,56 @@
+---
+description: Graphify knowledge-graph-first policy — always applied
+alwaysApply: true
+---
+
+# Graphify Policy (token-efficiency, hard constraint)
+
+This project uses [Graphify](https://github.com/Graphify-Labs/graphify) to
+maintain a local knowledge graph of the codebase in `graphify-out/`. Every
+agent MUST prefer the graph over blindly reading/grepping raw files whenever
+the codebase is non-trivial in size (roughly: more than a handful of files).
+
+## Before exploring the codebase
+1. Check whether `graphify-out/graph.json` and `graphify-out/GRAPH_REPORT.md`
+   exist.
+   - If they don't exist yet, tell the human to run `graphify .` (or
+     `/graphify .` inside the assistant, or plain `graphify .` on Windows
+     PowerShell — no leading slash there) once, then continue.
+   - If they exist but source files were changed since the last build,
+     suggest `graphify . --update` before relying on them for anything
+     architecture-sensitive.
+2. For "where is X / what calls Y / how does A connect to B / what would
+   break if I change C" questions, prefer, in this order:
+   a. `graphify query "<question>"`, `graphify explain "<Name>"`, or
+      `graphify path "<A>" "<B>"` — or the MCP tools `query_graph`,
+      `get_node`, `get_neighbors`, `shortest_path` if the Graphify MCP
+      server is configured for this project (see `mcp/SETUP.md`).
+   b. Reading `graphify-out/GRAPH_REPORT.md` for a broad architecture
+      overview (god nodes, communities, surprising connections).
+   c. Only as a last resort, grep/read raw source files directly.
+3. Never re-derive the whole codebase structure from scratch by opening many
+   files when a scoped graph query would answer the question with far fewer
+   tokens — this is the entire point of using Graphify.
+
+## After making changes
+- If a change adds/removes/renames files, functions, classes, or cross-file
+  relationships, tell the human to run `graphify . --update` (cheap, local,
+  AST-only, no LLM cost for code) so the graph stays accurate for the next
+  task/version.
+- The `docs` agent must mention "run `graphify . --update`" in its handoff
+  note whenever the change is structural (new/removed/renamed files or
+  public APIs).
+- The `release` step of `release-workflow.md` always refreshes the graph
+  before closing out a version.
+
+## Rules
+- `graphify-out/graph.json` and `graphify-out/GRAPH_REPORT.md` are the
+  source of truth for structure questions. `graphify-out/graph.html` is for
+  humans browsing visually; agents should not parse it.
+- Commit `graphify-out/graph.json` and `graphify-out/GRAPH_REPORT.md` so the
+  whole team and every agent session starts from the same map. Do **not**
+  commit `graphify-out/cost.json` (local cost log) — see the project
+  `.gitignore`.
+- If Graphify is not installed/configured yet in this project, fall back to
+  normal file exploration, note the limitation once, and suggest running the
+  install steps in `mcp/SETUP.md` — do not fail the task because of it.

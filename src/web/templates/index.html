@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>کمترین قیمت</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="brand">MinPrice</p>
+      <h1>کمترین قیمت را پیدا کن</h1>
+      <p class="lede">لپ‌تاپ، پارچه، گلس، قهوه یا هر چیزی — جستجو در دیجی‌کالا، باسلام، دیوار، ترب، اسنپ و اکالا.</p>
+
+      <form id="search-form" class="search" action="/" method="get">
+        <label class="sr-only" for="q">عبارت جستجو</label>
+        <input
+          id="q"
+          name="q"
+          type="search"
+          placeholder="مثلاً: لپ تاپ ایسوس، گلس سامسونگ، پارچه مخمل…"
+          value="{{ query or '' }}"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="btn-search">جستجو</button>
+      </form>
+      <p id="status" class="status" aria-live="polite"></p>
+    </header>
+
+    <main>
+      {% if report and report.winner %}
+      <section class="winner-block">
+        <p class="eyebrow">ارزان‌ترین برای «{{ report.query }}»</p>
+        <article class="winner">
+          <h2>{{ report.winner.title }}</h2>
+          <p class="price">{{ report.winner.price_toman|toman }} <span>تومان</span></p>
+          {% if report.prefer_unit_price and report.winner.price_per_gram %}
+          <p class="meta">{{ "%.1f"|format(report.winner.price_per_gram) }} تومان/گرم
+            {% if report.winner.weight_grams %} · {{ report.winner.weight_grams|int }} گرم{% endif %}
+          </p>
+          {% elif report.winner.weight_grams %}
+          <p class="meta">{{ report.winner.weight_grams|int }} گرم</p>
+          {% endif %}
+          <p class="meta">منبع: {{ report.winner.source }}</p>
+          <a class="cta" href="{{ report.winner.url }}" target="_blank" rel="noopener">مشاهده و خرید</a>
+        </article>
+      </section>
+
+      {% if report.offers and report.offers|length > 1 %}
+      <section class="list-block">
+        <h3>سایر پیشنهادها</h3>
+        <ol class="offers">
+          {% for o in report.offers[:20] %}
+          <li>
+            <div>
+              <a href="{{ o.url }}" target="_blank" rel="noopener">{{ o.title }}</a>
+              <span class="src">{{ o.source }}</span>
+            </div>
+            <strong>{{ o.price_toman|toman }} تومان</strong>
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+
+      {% if report.sources %}
+      <p class="meta">منابع موفق: {{ report.sources|join('، ') }}</p>
+      {% endif %}
+      {% if report.errors %}
+      <details class="errors">
+        <summary>هشدار منابع ({{ report.errors|length }})</summary>
+        <ul>{% for e in report.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+      </details>
+      {% endif %}
+
+      {% elif report and report.query %}
+      <p class="empty">برای «{{ report.query }}» پیشنهاد قابل‌اعتمادی پیدا نشد. دوباره جستجو کن یا عبارت را دقیق‌تر بنویس.</p>
+      {% if report.errors %}
+      <details class="errors">
+        <summary>جزئیات منابع</summary>
+        <ul>{% for e in report.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+      </details>
+      {% endif %}
+
+      {% else %}
+      <p class="empty">یک عبارت بالا بنویس تا در فروشگاه‌های ایرانی بگردیم.</p>
+      {% endif %}
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

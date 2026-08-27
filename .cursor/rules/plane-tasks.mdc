@@ -1,0 +1,32 @@
+---
+description: Plane is the source of truth for product tasks in this repo — always applied when using Plane
+alwaysApply: true
+---
+
+# Plane task management
+
+This project uses **Plane** (not "Plain") as the preferred product backlog
+when MCP is configured. See `mcp/SETUP.md` and `.cursor/agents/plane.md`.
+
+## Instance defaults (fill per-repo project mapping below)
+- Workspace: `iran_ma` on `https://plane.ir-ma.ir` (change if your
+  instance differs — keep secrets out of git; API key lives only in
+  local `mcp.json` / env).
+- This repo maps to Plane project:
+  **`<PROJECT_NAME>`** (`identifier: <KEY>`, `project_id: <UUID>`)
+- Modules: map services/folders → Plane module UUIDs:
+  - `<module-name>` → `<UUID>`
+
+## Agent rules
+1. Before coding a feature/bug, find or create a work item in Plane via
+   MCP (`plane` agent) when Plane is configured.
+2. Put work items in the correct module when a mapping exists above.
+3. When a PR/MR is opened: comment the link on the work item.
+4. When done (after human merge / release checkpoint): move state to Done
+   and add a short comment.
+5. Do not invent a parallel product TODO list in markdown; Plane is
+   canonical for backlog. (`memory/progress.md` is only for agent-step
+   continuity across Cursor sessions — keep both.)
+6. Prefer readable IDs like `2-21` when talking to the human.
+7. If Plane MCP is offline, fall back to `prompts/feature-template.md`
+   and tell the human once.

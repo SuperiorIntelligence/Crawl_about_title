@@ -1,0 +1,50 @@
+---
+description: Task/step-level resume-across-sessions policy — always applied
+alwaysApply: true
+---
+
+# Continuity Policy (hard constraint)
+
+Coding tasks in this project often span multiple Cursor sessions — the human
+may close Cursor, come back days later, or start a fresh chat mid-task. This
+policy makes sure the agent chain can resume **exactly** where it left off —
+which workflow, which step/agent, which branch, what's done vs pending —
+instead of restarting from scratch or losing context. State lives in
+`memory/progress.md`.
+
+## Rules
+1. At the very start of any task in any session, read `memory/progress.md`
+   (in addition to `AGENTS.md`) before doing anything else. If it shows an
+   in-progress task, resume from that exact agent/step — do not restart the
+   workflow from Planner unless the recorded step already was Planner, or
+   the human explicitly asks to start over.
+2. After finishing its own step (at every handoff point in any workflow),
+   update `memory/progress.md` with what was just completed, what's next,
+   and the current branch name — before ending its turn. This must happen
+   even right before a STOP point (e.g. the GitHub push-approval stop),
+   since the human may close the session immediately after.
+3. If `memory/progress.md` is ambiguous or contradicts the visible repo
+   state (e.g. it says "Backend in progress" but that branch doesn't exist,
+   or it was already merged), stop and ask the human to reconcile instead of
+   guessing.
+4. When a feature/bugfix is fully done (PR merged) or a version is fully
+   Released, clear/reset the "Active Task" section back to its `<fill in>`
+   template state and append a one-line entry to the "Recently Completed"
+   trail — keep the Active section clean for the next task.
+5. Never let `memory/progress.md` go stale across a handoff — a step that
+   forgets to update it is the one thing that breaks resumability for the
+   next session.
+
+## Why
+- Without this, every new session either re-reads the whole conversation
+  history (if it still exists) or the human has to re-explain where things
+  stood — both waste time and tokens, and the second one is error-prone.
+- This is the task/step-level sibling to two mechanisms that already keep
+  other kinds of state small and current:
+  - `.cursor/rules/versioning.mdc` — keeps **version-level** state in
+    `memory/roadmap.md` (which version is current, what's in/out of scope).
+  - `.cursor/rules/graphify.mdc` — keeps **codebase-structure** state in
+    `graphify-out/` (what the code looks like, how it connects).
+  `memory/progress.md` fills the remaining gap: **where exactly the current
+  task/step is**, so a session interrupted mid-Backend-step or right after a
+  Reviewer verdict can pick back up without re-deriving anything.

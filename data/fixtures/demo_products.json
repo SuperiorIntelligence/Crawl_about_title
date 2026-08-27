@@ -1,0 +1,34 @@
+[
+  {
+    "title": "دانه قهوه عربیکا اتیوپی ۲۵۰ گرم",
+    "coffee_type": "arabica",
+    "weight_grams": 250,
+    "price_toman": 100000,
+    "url": "https://example.ir/arabica-250",
+    "source": "demo-fixture"
+  },
+  {
+    "title": "قهوه عربیکا ۵۰۰ گرم ویژه",
+    "coffee_type": "arabica",
+    "weight_grams": 500,
+    "price_toman": 120000,
+    "url": "https://example.ir/arabica-500",
+    "source": "demo-fixture"
+  },
+  {
+    "title": "روبوستا ویتنام ۱ کیلوگرم",
+    "coffee_type": "robusta",
+    "weight_grams": 1000,
+    "price_toman": 280000,
+    "url": "https://example.ir/robusta-1kg",
+    "source": "demo-fixture"
+  },
+  {
+    "title": "قهوه روبوستا ۲۵۰ گرم",
+    "coffee_type": "robusta",
+    "weight_grams": 250,
+    "price_toman": 85000,
+    "url": "https://example.ir/robusta-250",
+    "source": "demo-fixture"
+  }
+]
